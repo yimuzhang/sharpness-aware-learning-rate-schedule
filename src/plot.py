@@ -10,8 +10,8 @@ loss = "mse"
 gd_lr = 0.05
 gd_eig_freq = 1
 
-gd_directory = f"E:\PEK_project\edge-of-stability-github\\res/{dataset}/{arch}/seed_1/{loss}/mom/lr_{gd_lr}"
-gd_directory_1="E:\PEK_project\edge-of-stability-github\\baseline/cifar10-5k/fc-tanh/seed_1/mse/mom/lr_0.07"
+gd_directory = f"./res/{dataset}/{arch}/seed_1/{loss}/mom/lr_{gd_lr}"
+gd_directory_1="./baseline/cifar10-5k/fc-tanh/seed_1/mse/mom/lr_0.07"
 
 gd_train_loss = torch.load(f"{gd_directory}/train_loss_final")
 gd_train_acc = torch.load(f"{gd_directory}/train_acc_final")
@@ -27,16 +27,8 @@ gd_sig1=torch.load(f"{gd_directory_1}/sigma_final")
 gd_lr1 = torch.load(f"{gd_directory_1}/lr_final")
 
 gd_sig=torch.load(f"{gd_directory}/sigma_final")
-print(gd_train_loss[2300:2400])
-#gd_sig1=torch.load(f"{gd_directory_1}/sigma_final")
-#print(min(gd_train_loss[5200:6950]))
-#print(max(gd_sig[5200:6950]))
-#print(gd_train_loss1[280:300])
-print(gd_sig[0:2])
-print(gd_sharpness[0:1])
 
 plt.figure(figsize=(5, 5), dpi=100)
-
 plt.subplot(4, 1, 1)
 plt.plot(gd_train_loss[:],label="lr0=6*sig/sharpness,step=0")
 plt.plot(gd_train_loss1[:4000],label="lr=6*sig/sharpness")
